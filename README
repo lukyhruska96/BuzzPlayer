@@ -1,0 +1,25 @@
+first compile libzmq and cpplibzmq
+- libzmq
+-- mkdir build
+-- cd build
+-- cmake ..
+-- make -j 4 install
+
+- cpplibzmq  // maybe need to install newer version of cmake ... included in lib folder
+-- mkdir build
+-- cd build
+-- cmake ..
+-- make -j 4 install
+
+then compile buzzplayer_client using:
+g++ -std=c++14 -lzmq -lasound main.cpp beep.cpp networking.cpp
+
+and buzzplayer_server using:
+g++ -std=c++14 -lzmq -lpthread main.cpp clients.cpp networking.cpp fileparser.cpp
+
+then run server using:
+./a.out __file_to_play__
+
+and clients using:
+./a.out -i __ip_host__
+
